@@ -1,1 +1,23 @@
+@use "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@plugin "daisyui" {
+   root: ":root";
+   logs: true;
+ }
+
+@plugin "daisyui/theme" {
+  name: "fantasy";
+  default: true;
+
+  --color-primary: "#0000FF";
+  --color-primary-content: "white";
+  --color-secondary: "#F6F6F6";
+  --color-neutral: "#E8E8E8";
+}
 /* You can add global styles to this file, and also import other style files */
+
+

@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
+import { FaConfig, FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fontAwesomeIcons } from './shared/font-awesome-icons';
+
 
 @Component({
-  imports: [NxWelcome, RouterModule],
-  selector: 'app-root',
+  imports: [RouterModule, FaIconComponent],
+  selector: 'ecom-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
+export class App implements OnInit {
+  private faIconLibrary = inject(FaIconLibrary);
+  private faConfig = inject(FaConfig);
   protected title = 'ecom-frontend';
+
+  ngOnInit(): void {
+    this.initFontAwesome();
+  }
+
+  private initFontAwesome() {
+    this.faConfig.defaultPrefix = 'far';
+    this.faIconLibrary.addIcons(...fontAwesomeIcons);
+  }
 }
